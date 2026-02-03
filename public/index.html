@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analytics Platform</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="stylesheet" href="/views/styles.css">
+</head>
+<body>
+<h2>Analytical Platform (Made by Sultan K.)</h2>
+
+<div class="card">
+    <div class="row">
+        <div>
+            <label>Field</label>
+            <select id="field">
+                <option value="field1">field1</option>
+                <option value="field2">field2</option>
+                <option value="field3">field3</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Start date (YYYY-MM-DD)</label>
+            <input id="start_date" type="date" />
+        </div>
+
+        <div>
+            <label>End date (YYYY-MM-DD)</label>
+            <input id="end_date" type="date" />
+        </div>
+
+        <div>
+            <label>Chart type</label>
+            <select id="chartType">
+                <option value="line">Line</option>
+                <option value="bar">Bar</option>
+            </select>
+        </div>
+
+        <div style="align-self: end;">
+            <button id="loadBtn">Load</button>
+        </div>
+    </div>
+
+    <div id="error" class="error"></div>
+</div>
+
+<div class="card">
+    <h3>Metrics</h3>
+    <div class="metrics">
+        <div class="metric"><b>Average</b><span id="avg">-</span></div>
+        <div class="metric"><b>Min</b><span id="min">-</span></div>
+        <div class="metric"><b>Max</b><span id="max">-</span></div>
+        <div class="metric"><b>Std Dev</b><span id="stdDev">-</span></div>
+    </div>
+</div>
+
+<div class="card">
+    <h3>Time-series chart</h3>
+    <canvas id="chart"></canvas>
+</div>
+
+<script src="./app.js"></script>
+</body>
+</html>

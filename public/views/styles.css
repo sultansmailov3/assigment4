@@ -1,0 +1,202 @@
+:root{
+    --bg: #f6f7fb;
+    --card: #ffffff;
+    --text: #101828;
+    --muted: #667085;
+    --border: #e5e7eb;
+    --border2: #d0d5dd;
+    --shadow: 0 10px 30px rgba(16,24,40,.08);
+    --radius: 14px;
+
+    --primary: #2563eb;
+    --primaryHover: #1d4ed8;
+
+    --danger: #b00020;
+}
+
+*{ box-sizing: border-box; }
+
+body{
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background: radial-gradient(1200px 600px at 10% 0%, #eef2ff 0%, transparent 60%),
+    radial-gradient(1200px 600px at 90% 0%, #ecfeff 0%, transparent 60%),
+    var(--bg);
+    color: var(--text);
+    max-width: 1050px;
+    margin: 24px auto;
+    padding: 0 14px;
+    line-height: 1.4;
+}
+
+h2{
+    margin: 6px 0 18px;
+    font-size: 22px;
+    letter-spacing: .2px;
+}
+
+h3{
+    margin: 0 0 12px;
+    font-size: 16px;
+    color: var(--text);
+}
+
+.card{
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px;
+    margin-top: 14px;
+    box-shadow: var(--shadow);
+}
+
+.row{
+    display: grid;
+    grid-template-columns: repeat(5, minmax(160px, 1fr));
+    gap: 12px;
+    align-items: end;
+}
+
+@media (max-width: 980px){
+    .row{ grid-template-columns: repeat(2, minmax(160px, 1fr)); }
+}
+
+@media (max-width: 520px){
+    .row{ grid-template-columns: 1fr; }
+}
+
+label{
+    display: block;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--muted);
+    margin: 0 0 6px;
+}
+
+input, select, button{
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border2);
+    background: #fff;
+    color: var(--text);
+    outline: none;
+    transition: box-shadow .15s ease, border-color .15s ease, transform .05s ease;
+}
+
+input::placeholder{ color: #98a2b3; }
+
+input:focus, select:focus{
+    border-color: rgba(37, 99, 235, .55);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, .12);
+}
+
+select{
+    cursor: pointer;
+    appearance: none;
+    background-image:
+            linear-gradient(45deg, transparent 50%, #667085 50%),
+            linear-gradient(135deg, #667085 50%, transparent 50%);
+    background-position:
+            calc(100% - 18px) 55%,
+            calc(100% - 12px) 55%;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 34px;
+}
+
+button{
+    border: 1px solid rgba(37, 99, 235, .35);
+    background: linear-gradient(180deg, rgba(37,99,235,1) 0%, rgba(29,78,216,1) 100%);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(37,99,235,.18);
+}
+
+button:hover{
+    background: linear-gradient(180deg, rgba(29,78,216,1) 0%, rgba(30,64,175,1) 100%);
+}
+
+button:active{
+    transform: translateY(1px);
+}
+
+.metrics{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(150px, 1fr));
+    gap: 12px;
+}
+
+@media (max-width: 900px){
+    .metrics{ grid-template-columns: repeat(2, minmax(150px, 1fr)); }
+}
+@media (max-width: 460px){
+    .metrics{ grid-template-columns: 1fr; }
+}
+
+.metric{
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 12px;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.metric::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(500px 140px at 10% 0%, rgba(37,99,235,.10), transparent 60%);
+    pointer-events: none;
+}
+
+.metric b{
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    letter-spacing: .2px;
+}
+
+.metric span{
+    display: block;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: .2px;
+}
+
+.error{
+    color: var(--danger);
+    margin-top: 10px;
+    font-size: 13px;
+    background: rgba(176,0,32,.06);
+    border: 1px solid rgba(176,0,32,.18);
+    border-radius: 12px;
+    padding: 10px 12px;
+    display: none; /* покажем только когда есть текст */
+}
+
+/* Чтобы ошибка красиво появлялась: просто в JS делай errorEl.style.display = msg ? "block" : "none"; */
+
+canvas#chart{
+    width: 100% !important;
+    max-height: 420px;
+}
+
+/* маленькая полировка */
+.card h3{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card h3::before{
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(37,99,235,.9);
+    box-shadow: 0 0 0 4px rgba(37,99,235,.15);
+}
